@@ -139,7 +139,3 @@ AdventureWorks_Territories.csv
 ## License
 
 This project is licensed under the MIT License.
-
-## Contact
-
-For questions or support, please contact the data engineering team.
