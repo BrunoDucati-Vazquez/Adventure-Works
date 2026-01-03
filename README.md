@@ -4,7 +4,7 @@
 
 ## Architecture Diagram
 
-<img width="859" height="470" alt="image" src="https://github.com/user-attachments/assets/c4afdb35-f1c1-442e-b88f-fc1e86e0203b" />
+<img width="878" height="396" alt="image" src="https://github.com/user-attachments/assets/d6640171-45f9-4693-b83a-32ffae1c6d42" />
 
 ## Architecture Components
 
@@ -12,11 +12,37 @@ This project implements a modern data engineering pipeline with the following co
 
 ### 1. **Data Source**
 - **HTTP**: External data sources accessed via HTTP APIs
-- Raw data is pulled from various HTTP endpoints
+- Raw data is pulled from various Folders
+
+AdventureWorks_Calendar.csv
+	
+AdventureWorks_Customers.csv
+	
+AdventureWorks_Product_Categories.csv
+	
+AdventureWorks_Product_Subcategories.csv
+	
+AdventureWorks_Products.csv
+	
+AdventureWorks_Returns.csv
+
+AdventureWorks_Sales_2015.csv
+	
+AdventureWorks_Sales_2016.csv
+	
+AdventureWorks_Sales_2017.csv
+	
+AdventureWorks_Territories.csv
 
 ### 2. **Data Ingestion**
 - **Azure Data Factory**: Orchestrates and automates data movement
 - Extracts data from HTTP sources
+- Sinks to Data Lake Gen2
+
+<img width="538" height="264" alt="image" src="https://github.com/user-attachments/assets/171f5399-08ef-41a3-812b-6b4b43e883ab" />
+
+<img width="1903" height="967" alt="image" src="https://github.com/user-attachments/assets/31ef54d9-cbc7-4f06-a11c-3bfdb90b7768" />
+
 
 ### 3. **Raw Data Store (Bronze Layer)**
 - **Azure Data Lake Gen2**: Stores raw, unprocessed data
@@ -24,31 +50,20 @@ This project implements a modern data engineering pipeline with the following co
 - Acts as the single source of truth
 - Provides scalable and secure storage
 
-### 4. **Transformation Layer**
+<img width="1919" height="1040" alt="image" src="https://github.com/user-attachments/assets/c09fd9fe-0671-4cd6-b707-75f2b25e911f" />
+
+
+### 4. **Transformation Layer usando o notebook Silver Layer**
 - **Databricks**: Processes and transforms data
 - **Raw Data Store**: Reads data from Data Lake Gen2
-- **Transformed Data**: Processes data into cleaned and structured formats
+- **Transformed Data**: Processes data into cleaned and structured formats using pySpark
 - Implements data quality checks
-- Performs data transformations (Silver and Gold layers)
 
 ### 5. **Serving Layer**
 - **Azure Synapse Analytics**: Data warehousing solution
 - Optimized for analytical queries
 - Stores transformed and aggregated data
 - Enables high-performance data access
-
-### 6. **Reporting**
-- **Power BI**: Business intelligence and visualization
-- Connects to Synapse Analytics
-- Provides interactive dashboards
-- Delivers insights to business users
-
-## Data Flow
-
-```
-HTTP Source → Data Factory → Data Lake Gen2 (Raw) → Databricks (Transform) → 
-Data Lake Gen2 (Transformed) → Synapse Analytics → Power BI
-```
 
 ## Layers Architecture
 
